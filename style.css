@@ -5,8 +5,8 @@ body {
   height: 100vh;
   background: linear-gradient(135deg, #6462e2, #ec7dec, #4e99f0);
   font-family: "Poppins", sans-serif;
-  overflow: hidden;
   margin: 0;
+  overflow: hidden;
 }
 
 .envelope-container {
@@ -68,10 +68,7 @@ body {
   animation: fadeHint 2s ease-in-out infinite alternate;
 }
 
-@keyframes fadeHint {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
-}
+@keyframes fadeHint { from { opacity: 0.6; } to { opacity: 1; } }
 
 /* Flowers */
 .flowers {
@@ -85,8 +82,6 @@ body {
 
 .flower {
   position: relative;
-  top: 35px;
-  right: 15px;
   width: 13px;
   height: 10px;
   animation: sway 3s ease-in-out infinite;
@@ -105,28 +100,21 @@ body {
 .petal5{transform:translateX(-50%) rotate(120deg);}
 .petal6{transform:translateX(-50%) rotate(150deg);}
 
-@keyframes sway {
-  0%,100%{transform:rotate(0deg);}
-  50%{transform:rotate(3deg);}
-}
+@keyframes sway {0%,100%{transform:rotate(0deg);} 50%{transform:rotate(3deg);}}
 
 /* Animasi buka amplop */
-.envelope.open .triangle-flap {
-  transform: rotateX(180deg);
-}
+.envelope.open .triangle-flap { transform: rotateX(180deg); }
+.envelope.open .letter { bottom: 0; opacity: 1; transform: translateY(0); }
 
-.envelope.open .letter {
-  bottom: 0;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive */
+/* ===== Responsive ===== */
 @media screen and (max-width: 600px) {
-  .envelope { width: 280px; height: 220px;}
-  .triangle-flap { height: 80px;}
-  .flowers { top: 120px; right: 100px; transform: scale(0.6);}
-  .letter { font-size: 13px;}
-  .letter .sender { font-size: 11px;}
-  .hint { font-size: 13px; margin-top: 10px;}
+  body { padding: 10px; overflow-x: hidden; }
+  .envelope-container { transform: scale(1); margin-top: 10px; max-width: 100%; }
+  .envelope { width: 90%; max-width: 300px; height: auto; min-height: 220px; }
+  .triangle-flap { height: 80px; }
+  .flowers { bottom: 50px; right: 50%; transform: translateX(50%) scale(0.6); gap: 4px; top: auto; }
+  .flower { top: 0; right: 0; }
+  .letter { font-size: 14px; bottom: -10px; padding: 15px; height: auto; max-height: 60vh; overflow-y: auto; line-height: 1.4; }
+  .letter .sender { font-size: 12px; }
+  .hint { font-size: 13px; margin-top: 15px; }
 }
