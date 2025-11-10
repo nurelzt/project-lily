@@ -1,5 +1,8 @@
 const envelope = document.querySelector('.envelope');
 
-envelope.addEventListener('click', () => {
+function toggleEnvelope() {
   envelope.classList.toggle('open');
-});
+}
+
+envelope.addEventListener('click', toggleEnvelope);
+envelope.addEventListener('touchstart', toggleEnvelope); // tambahan untuk mobile
