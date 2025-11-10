@@ -209,6 +209,20 @@ body {
   transform: translateY(0);
 }
 
+@media (max-width: 600px) {
+  .envelope {
+    width: 90vw;
+    height: auto;
+  }
+  .letter {
+    font-size: 12px;
+    padding: 15px;
+  }
+  .hint {
+    font-size: 14px;
+  }
+}
+
 /* ==== Tambahan biar rapi di HP ==== */
 @media (max-width: 600px) {
   .envelope {
@@ -240,7 +254,32 @@ body {
   }
 }
 
-/* Supaya font nggak miring di HP */
-* {
-  font-style: normal;
+/* Fix tampilan di HP */
+@media (max-width: 600px) {
+
+  /* supaya font tidak miring */
+  .letter {
+    font-style: normal !important;
+    font-size: 13px;
+    line-height: 1.3;
+    padding: 15px;
+  }
+
+  /* biar bunga tidak terlalu besar */
+  .flowers {
+    top: 140px;
+    right: 90px;
+    transform: scale(0.6);
+  }
+
+  /* ukuran amplop biar muat di layar */
+  .envelope {
+    width: 85vw;
+    height: auto;
+  }
+
+  /* teks petunjuk juga menyesuaikan */
+  .hint {
+    font-size: 14px;
+  }
 }
