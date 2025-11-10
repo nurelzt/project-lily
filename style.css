@@ -1,4 +1,3 @@
-/* ======== BASE STYLE ======== */
 body {
   display: flex;
   justify-content: center;
@@ -16,19 +15,14 @@ body {
 
 .envelope {
   position: relative;
-  width: 350px;
-  height: 300px;
+  width: 320px;
+  height: 280px;
   background: #5274be;
   border: 2px solid #e0719c;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.6s ease;
   box-shadow: 0 6px 20px rgba(20, 20, 20, 0.2);
-}
-
-.envelope:hover {
-  transform: scale(1.05);
 }
 
 .triangle-flap {
@@ -36,48 +30,34 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 110px;
+  height: 100px;
   background: #e4418f;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
   transform-origin: top;
   transition: transform 0.6s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 2;
 }
 
 .letter {
-  font-family: "Poppins", sans-serif;
   position: absolute;
-  font-size: 14px;
-  line-height: 1.3;
-  color: #ff8c8c;
   bottom: -160px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #5274be;
   padding: 20px;
   box-sizing: border-box;
+  background: #5274be;
+  color: #ff8c8c;
+  font-size: 14px;
+  line-height: 1.3;
   border-radius: 8px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease;
   box-shadow: 0 4px 15px rgba(233, 227, 227, 0.1);
-}
-
-.letter h2 {
-  margin-top: 0;
-  color: #e685b5;
-}
-
-.letter .sender {
-  text-align: right;
-  margin-top: 20px;
-  font-style: italic;
-  font-weight: 500;
-  color: #ff8c8c;
-  font-size: 10px;
+  z-index: 1;
 }
 
 .hint {
@@ -93,7 +73,7 @@ body {
   to { opacity: 1; }
 }
 
-/* ======== FLOWERS ======== */
+/* Flowers */
 .flowers {
   position: absolute;
   top: 170px;
@@ -101,7 +81,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 1px;
 }
 
 .flower {
@@ -114,59 +93,24 @@ body {
   transform-origin: bottom center;
 }
 
-.stem {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 70px;
-  background-color: #2d6a4f;
-  border-radius: 2px;
-}
-
-.leaf {
-  position: absolute;
-  width: 15px;
-  height: 8px;
-  background-color: #3a9953;
-  border-radius: 7px;
-}
-
-.leaf-left {
-  left: -10px;
-  transform: rotate(-30deg);
-}
-
-.leaf-right {
-  right: -10px;
-  transform: rotate(30deg);
-}
-
-.petal {
-  position: absolute;
-  bottom: 70px;
-  left: 50%;
-  width: 16px;
-  height: 22px;
-  background-color: #ff4f79;
-  border-radius: 50% 50% 0 0;
-  transform-origin: bottom center;
-}
-
-.petal1 { transform: translateX(-50%) rotate(0deg); }
-.petal2 { transform: translateX(-50%) rotate(30deg); }
-.petal3 { transform: translateX(-50%) rotate(60deg); }
-.petal4 { transform: translateX(-50%) rotate(90deg); }
-.petal5 { transform: translateX(-50%) rotate(120deg); }
-.petal6 { transform: translateX(-50%) rotate(150deg); }
+.stem { position: absolute; bottom:0; left:50%; transform:translateX(-50%); width:4px; height:70px; background:#2d6a4f; border-radius:2px;}
+.leaf { position:absolute; width:15px; height:8px; background:#3a9953; border-radius:7px;}
+.leaf-left { left:-10px; transform:rotate(-30deg);}
+.leaf-right { right:-10px; transform:rotate(30deg);}
+.petal { position:absolute; bottom:70px; left:50%; width:16px; height:22px; background:#ff4f79; border-radius:50% 50% 0 0; transform-origin:bottom center;}
+.petal1{transform:translateX(-50%) rotate(0deg);}
+.petal2{transform:translateX(-50%) rotate(30deg);}
+.petal3{transform:translateX(-50%) rotate(60deg);}
+.petal4{transform:translateX(-50%) rotate(90deg);}
+.petal5{transform:translateX(-50%) rotate(120deg);}
+.petal6{transform:translateX(-50%) rotate(150deg);}
 
 @keyframes sway {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(3deg); }
+  0%,100%{transform:rotate(0deg);}
+  50%{transform:rotate(3deg);}
 }
 
-/* ======== ANIMATION OPEN ======== */
+/* Animasi buka amplop */
 .envelope.open .triangle-flap {
   transform: rotateX(180deg);
 }
@@ -177,47 +121,12 @@ body {
   transform: translateY(0);
 }
 
-/* ======== RESPONSIVE STYLE ======== */
+/* Responsive */
 @media screen and (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-    padding: 10px;
-  }
-
-  .envelope-container {
-    transform: scale(0.85);
-    margin-top: 10px;
-  }
-
-  .envelope {
-    width: 300px;
-    height: 240px;
-  }
-
-  .triangle-flap {
-    height: 80px;
-  }
-
-  .flowers {
-    transform: scale(0.6);
-    top: 120px;
-    right: 100px;
-  }
-
-  .letter {
-    font-size: 13px !important;
-    font-family: "Poppins", sans-serif !important;
-    font-style: normal !important;
-  }
-
-  .letter .sender {
-    text-align: left;
-    font-size: 11px;
-    font-style: normal !important;
-  }
-
-  .hint {
-    font-size: 13px;
-    margin-top: 10px;
-  }
+  .envelope { width: 280px; height: 220px;}
+  .triangle-flap { height: 80px;}
+  .flowers { top: 120px; right: 100px; transform: scale(0.6);}
+  .letter { font-size: 13px;}
+  .letter .sender { font-size: 11px;}
+  .hint { font-size: 13px; margin-top: 10px;}
 }
