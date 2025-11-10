@@ -12,20 +12,21 @@ body {
 .envelope-container {
   text-align: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
+  padding: 20px 0;
 }
 
 .envelope {
   position: relative;
   width: 100%;
   height: auto;
-  min-height: 280px;
   background: #5274be;
   border: 2px solid #e0719c;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(20, 20, 20, 0.2);
+  box-shadow: 0 6px 20px rgba(20,20,20,0.2);
+  min-height: 280px;
 }
 
 .triangle-flap {
@@ -45,7 +46,7 @@ body {
 
 .letter {
   position: absolute;
-  bottom: -10px;
+  top: 110px; /* ubah supaya mulai muncul di bawah flap */
   left: 0;
   width: 100%;
   padding: 20px;
@@ -54,11 +55,11 @@ body {
   color: #ff8c8c;
   font-size: 14px;
   line-height: 1.4;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease;
-  max-height: 70vh;
+  max-height: calc(100% - 110px);
   overflow-y: auto;
   z-index: 1;
 }
@@ -71,9 +72,11 @@ body {
   animation: fadeHint 2s ease-in-out infinite alternate;
 }
 
-@keyframes fadeHint { from {opacity:0.6;} to {opacity:1;} }
+@keyframes fadeHint {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
 
-/* Flowers */
 .flowers {
   position: absolute;
   bottom: 50px;
@@ -83,7 +86,13 @@ body {
   gap: 4px;
 }
 
-.flower { width:13px; height:10px; animation: sway 3s ease-in-out infinite; transform-origin: bottom center; }
+.flower {
+  width: 13px;
+  height: 10px;
+  animation: sway 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
 .stem { position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:4px; height:70px; background:#2d6a4f; border-radius:2px;}
 .leaf { position:absolute; width:15px; height:8px; background:#3a9953; border-radius:7px;}
 .leaf-left { left:-10px; transform:rotate(-30deg);}
@@ -95,18 +104,21 @@ body {
 .petal4{transform:translateX(-50%) rotate(90deg);}
 .petal5{transform:translateX(-50%) rotate(120deg);}
 .petal6{transform:translateX(-50%) rotate(150deg);}
-@keyframes sway {0%,100%{transform:rotate(0deg);} 50%{transform:rotate(3deg);}}
+@keyframes sway {0%,100%{transform:rotate(0deg);}50%{transform:rotate(3deg);}}
 
-/* Animasi buka amplop */
-.envelope.open .triangle-flap { transform: rotateX(180deg);}
-.envelope.open .letter { opacity: 1; transform: translateY(0); }
+.envelope.open .triangle-flap {
+  transform: rotateX(180deg);
+}
 
-/* Responsive */
+.envelope.open .letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media screen and (max-width: 600px) {
   .envelope { min-height: 220px; }
   .triangle-flap { height: 80px; }
-  .flowers { transform: translateX(-50%) scale(0.6);}
-  .letter { font-size:13px; padding:15px; max-height:60vh;}
-  .letter .sender { font-size:12px;}
-  .hint { font-size:13px; margin-top:10px;}
+  .flowers { transform: translateX(-50%) scale(0.6); bottom:40px; }
+  .letter { font-size:13px; padding:15px; }
+  .hint { font-size:13px; margin-top:10px; }
 }
