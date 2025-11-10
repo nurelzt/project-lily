@@ -4,5 +4,6 @@ function toggleEnvelope() {
   envelope.classList.toggle('open');
 }
 
+// Klik dan tap untuk mobile
 envelope.addEventListener('click', toggleEnvelope);
-envelope.addEventListener('touchstart', toggleEnvelope); // tambahan untuk mobile
+envelope.addEventListener('touchstart', toggleEnvelope);
