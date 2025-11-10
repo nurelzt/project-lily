@@ -2,21 +2,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #6462e2, #ec7dec, #4e99f0);
-  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
   margin: 0;
-  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #6462e2, #ec7dec, #4e99f0);
+  overflow-x: hidden;
 }
 
 .envelope-container {
   text-align: center;
+  width: 100%;
+  max-width: 400px;
 }
 
 .envelope {
   position: relative;
-  width: 320px;
-  height: 280px;
+  width: 100%;
+  height: auto;
+  min-height: 280px;
   background: #5274be;
   border: 2px solid #e0719c;
   border-radius: 10px;
@@ -42,53 +45,46 @@ body {
 
 .letter {
   position: absolute;
-  bottom: -160px;
+  bottom: -10px;
   left: 0;
   width: 100%;
-  height: 100%;
   padding: 20px;
   box-sizing: border-box;
   background: #5274be;
   color: #ff8c8c;
   font-size: 14px;
-  line-height: 1.3;
+  line-height: 1.4;
   border-radius: 8px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease;
-  box-shadow: 0 4px 15px rgba(233, 227, 227, 0.1);
+  max-height: 70vh;
+  overflow-y: auto;
   z-index: 1;
 }
 
 .hint {
   font-family: 'Dancing Script', cursive;
-  margin-top: 25px;
-  color: rgb(8, 8, 8);
+  margin-top: 15px;
+  color: #080808;
   font-weight: 500;
   animation: fadeHint 2s ease-in-out infinite alternate;
 }
 
-@keyframes fadeHint { from { opacity: 0.6; } to { opacity: 1; } }
+@keyframes fadeHint { from {opacity:0.6;} to {opacity:1;} }
 
 /* Flowers */
 .flowers {
   position: absolute;
-  top: 170px;
-  right: 160px;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.7);
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  gap: 4px;
 }
 
-.flower {
-  position: relative;
-  width: 13px;
-  height: 10px;
-  animation: sway 3s ease-in-out infinite;
-  transform-origin: bottom center;
-}
-
-.stem { position: absolute; bottom:0; left:50%; transform:translateX(-50%); width:4px; height:70px; background:#2d6a4f; border-radius:2px;}
+.flower { width:13px; height:10px; animation: sway 3s ease-in-out infinite; transform-origin: bottom center; }
+.stem { position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:4px; height:70px; background:#2d6a4f; border-radius:2px;}
 .leaf { position:absolute; width:15px; height:8px; background:#3a9953; border-radius:7px;}
 .leaf-left { left:-10px; transform:rotate(-30deg);}
 .leaf-right { right:-10px; transform:rotate(30deg);}
@@ -99,22 +95,18 @@ body {
 .petal4{transform:translateX(-50%) rotate(90deg);}
 .petal5{transform:translateX(-50%) rotate(120deg);}
 .petal6{transform:translateX(-50%) rotate(150deg);}
-
 @keyframes sway {0%,100%{transform:rotate(0deg);} 50%{transform:rotate(3deg);}}
 
 /* Animasi buka amplop */
-.envelope.open .triangle-flap { transform: rotateX(180deg); }
-.envelope.open .letter { bottom: 0; opacity: 1; transform: translateY(0); }
+.envelope.open .triangle-flap { transform: rotateX(180deg);}
+.envelope.open .letter { opacity: 1; transform: translateY(0); }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media screen and (max-width: 600px) {
-  body { padding: 10px; overflow-x: hidden; }
-  .envelope-container { transform: scale(1); margin-top: 10px; max-width: 100%; }
-  .envelope { width: 90%; max-width: 300px; height: auto; min-height: 220px; }
+  .envelope { min-height: 220px; }
   .triangle-flap { height: 80px; }
-  .flowers { bottom: 50px; right: 50%; transform: translateX(50%) scale(0.6); gap: 4px; top: auto; }
-  .flower { top: 0; right: 0; }
-  .letter { font-size: 14px; bottom: -10px; padding: 15px; height: auto; max-height: 60vh; overflow-y: auto; line-height: 1.4; }
-  .letter .sender { font-size: 12px; }
-  .hint { font-size: 13px; margin-top: 15px; }
+  .flowers { transform: translateX(-50%) scale(0.6);}
+  .letter { font-size:13px; padding:15px; max-height:60vh;}
+  .letter .sender { font-size:12px;}
+  .hint { font-size:13px; margin-top:10px;}
 }
