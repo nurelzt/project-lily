@@ -34,8 +34,7 @@ body {
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  /* TINGKATKAN height agar muat semua konten */
-  min-height: 420px;
+  min-height: 450px; /* Tingkatkan untuk muat semua konten */
   transition: all 0.4s ease;
 }
 
@@ -63,10 +62,10 @@ body {
 
 .letter {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
+  top: 130px; /* Kembalikan ke posisi semula */
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.95);
   color: #333;
@@ -76,13 +75,10 @@ body {
   opacity: 0;
   transform: translateY(40px) scale(0.95);
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  /* HAPUS SCROLLING - gunakan overflow hidden */
   overflow: hidden;
   z-index: 1;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  /* Biarkan height mengikuti konten */
   height: auto;
-  min-height: 250px;
 }
 
 .letter-content {
@@ -93,13 +89,13 @@ body {
 .letter h2 {
   font-family: cursive;
   color: #e4418f;
-  margin-bottom: 50px;
-  font-size: 20px;
+  margin-bottom: 20px; /* Kurangi margin */
+  font-size: 22px;
   text-align: center;
 }
 
 .letter p {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
@@ -112,7 +108,7 @@ body {
   font-size: 12px;
   font-weight: normal;
   line-height: 1.2;
-  margin-top: 65px;
+  margin-top: 20px; /* Kurangi margin */
 }
 
 .hint {
@@ -120,7 +116,7 @@ body {
   margin-top: 20px;
   color: white;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   animation: fadeHint 2s ease-in-out infinite alternate;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -136,27 +132,27 @@ body {
   }
 }
 
-/* Flowers styling - sesuaikan posisi */
+/* Flowers styling - posisi lebih rendah */
 .flowers {
   position: absolute;
-  bottom: 100px;
+  bottom: 30px; /* Naikkan posisi */
   left: 50%;
   transform: translateX(-50%) scale(0.7);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   z-index: 3;
 }
 
 .flower {
-  width: 20px;
-  height: 14px;
+  width: 15px;
+  height: 12px;
   animation: sway 4s ease-in-out infinite;
   transform-origin: bottom center;
 }
 
 .stem { 
   position: absolute; 
-  bottom: 20; 
+  bottom: 0; 
   left: 50%; 
   transform: translateX(-50%); 
   width: 3px; 
@@ -188,10 +184,10 @@ body {
 
 .petal { 
   position: absolute; 
-  bottom: 60px; 
+  bottom: 50px; 
   left: 50%; 
-  width: 15px; 
-  height: 25px; 
+  width: 14px; 
+  height: 18px; 
   background: linear-gradient(45deg, #ff4f79, #ff85a1); 
   border-radius: 50% 50% 0 0; 
   transform-origin: bottom center; 
@@ -224,7 +220,7 @@ body {
   display: none; /* Sembunyikan bunga saat letter terbuka */
 }
 
-/* Responsive Design */
+/* Responsive Design - FIX untuk HP */
 @media screen and (max-width: 480px) {
   body {
     padding: 15px;
@@ -236,7 +232,7 @@ body {
   }
   
   .envelope {
-    min-height: 380px; /* Sesuaikan untuk mobile */
+    min-height: 500px; /* TINGKATKAN height untuk HP */
   }
   
   .triangle-flap {
@@ -245,14 +241,16 @@ body {
   
   .letter {
     top: 110px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     padding: 15px;
-    font-size: 13px;
-    min-height: 220px;
+    font-size: 14px;
   }
   
   .letter h2 {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   
   .letter p {
@@ -260,14 +258,14 @@ body {
     font-size: 13px;
   }
   
-  .sender {
-    margin-top: 10px;
-    font-size: 15px;
+  .letter .sender {
+    margin-top: 15px;
+    font-size: 11px;
   }
   
   .flowers {
     transform: translateX(-50%) scale(0.6);
-    bottom: 15px;
+    bottom: 20px; /* Sesuaikan posisi bunga */
   }
   
   .hint {
@@ -282,17 +280,17 @@ body {
   }
   
   .envelope {
-    min-height: 360px;
+    min-height: 480px; /* Tinggi cukup untuk device kecil */
   }
   
   .letter {
     top: 100px;
     padding: 12px;
-    min-height: 200px;
   }
   
   .letter h2 {
     font-size: 18px;
+    margin-bottom: 12px;
   }
   
   .letter p {
@@ -300,11 +298,13 @@ body {
     margin-bottom: 5px;
   }
   
-  .sender {
-    font-size: 14px;
+  .letter .sender {
+    margin-top: 12px;
+    font-size: 10px;
   }
   
   .flowers {
     transform: translateX(-50%) scale(0.5);
+    bottom: 15px;
   }
 }
