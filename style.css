@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -5,28 +11,39 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #6462e2, #ec7dec, #4e99f0);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow-x: hidden;
+  padding: 20px;
 }
 
 .envelope-container {
   text-align: center;
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   padding: 20px 0;
 }
 
 .envelope {
   position: relative;
   width: 100%;
-  height: auto;
-  background: #5274be;
-  border: 2px solid #e0719c;
-  border-radius: 10px;
+  background: linear-gradient(145deg, #5a6fd8, #4860c4);
+  border: 3px solid #ff6b9d;
+  border-radius: 16px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(20,20,20,0.2);
-  min-height: 280px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  /* TINGKATKAN height agar muat semua konten */
+  min-height: 420px;
+  transition: all 0.4s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .triangle-flap {
@@ -34,91 +51,260 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
-  background: #e4418f;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  height: 120px;
+  background: linear-gradient(145deg, #ff6b9d, #e4418f);
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
   transform-origin: top;
-  transition: transform 0.6s ease;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 2;
 }
 
 .letter {
   position: absolute;
-  top: 110px; /* ubah supaya mulai muncul di bawah flap */
-  left: 0;
-  width: 100%;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
   padding: 20px;
-  box-sizing: border-box;
-  background: #5274be;
-  color: #ff8c8c;
-  font-size: 14px;
-  line-height: 1.4;
-  border-radius: 0 0 8px 8px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 12px;
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-  max-height: calc(100% - 110px);
-  overflow-y: auto;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* HAPUS SCROLLING - gunakan overflow hidden */
+  overflow: hidden;
   z-index: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* Biarkan height mengikuti konten */
+  height: auto;
+  min-height: 250px;
+}
+
+.letter-content {
+  max-width: 100%;
+  height: 100%;
+}
+
+.letter h2 {
+  font-family: cursive;
+  color: #e4418f;
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.letter p {
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.letter .sender {
+  text-align: right; 
+  font-family: cursive;
+  color: #e4418f;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-top: 65px;
 }
 
 .hint {
-  font-family: 'Dancing Script', cursive;
-  margin-top: 15px;
-  color: #080808;
+  font-family: cursive;
+  margin-top: 20px;
+  color: white;
   font-weight: 500;
+  font-size: 16px;
   animation: fadeHint 2s ease-in-out infinite alternate;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeHint {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0.7; 
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(-5px);
+  }
 }
 
+/* Flowers styling - sesuaikan posisi */
 .flowers {
   position: absolute;
-  bottom: 50px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%) scale(0.7);
   display: flex;
-  gap: 4px;
+  gap: 10px;
+  z-index: 3;
 }
 
 .flower {
-  width: 13px;
-  height: 10px;
-  animation: sway 3s ease-in-out infinite;
+  width: 20px;
+  height: 14px;
+  animation: sway 4s ease-in-out infinite;
   transform-origin: bottom center;
 }
 
-.stem { position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:4px; height:70px; background:#2d6a4f; border-radius:2px;}
-.leaf { position:absolute; width:15px; height:8px; background:#3a9953; border-radius:7px;}
-.leaf-left { left:-10px; transform:rotate(-30deg);}
-.leaf-right { right:-10px; transform:rotate(30deg);}
-.petal { position:absolute; bottom:70px; left:50%; width:16px; height:22px; background:#ff4f79; border-radius:50% 50% 0 0; transform-origin:bottom center;}
-.petal1{transform:translateX(-50%) rotate(0deg);}
-.petal2{transform:translateX(-50%) rotate(30deg);}
-.petal3{transform:translateX(-50%) rotate(60deg);}
-.petal4{transform:translateX(-50%) rotate(90deg);}
-.petal5{transform:translateX(-50%) rotate(120deg);}
-.petal6{transform:translateX(-50%) rotate(150deg);}
-@keyframes sway {0%,100%{transform:rotate(0deg);}50%{transform:rotate(3deg);}}
+.stem { 
+  position: absolute; 
+  bottom: 20; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 3px; 
+  height: 50px; 
+  background: linear-gradient(to top, #2d6a4f, #40916c); 
+  border-radius: 2px; 
+}
 
+.leaf { 
+  position: absolute; 
+  width: 12px; 
+  height: 6px; 
+  background: linear-gradient(45deg, #40916c, #52b788); 
+  border-radius: 6px; 
+  z-index: -1;
+}
+
+.leaf-left { 
+  bottom: 15px; 
+  left: -8px; 
+  transform: rotate(-25deg); 
+}
+
+.leaf-right { 
+  bottom: 10px; 
+  right: -8px; 
+  transform: rotate(25deg); 
+}
+
+.petal { 
+  position: absolute; 
+  bottom: 60px; 
+  left: 50%; 
+  width: 15px; 
+  height: 25px; 
+  background: linear-gradient(45deg, #ff4f79, #ff85a1); 
+  border-radius: 50% 50% 0 0; 
+  transform-origin: bottom center; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.petal1 { transform: translateX(-50%) rotate(0deg); }
+.petal2 { transform: translateX(-50%) rotate(30deg); }
+.petal3 { transform: translateX(-50%) rotate(60deg); }
+.petal4 { transform: translateX(-50%) rotate(90deg); }
+.petal5 { transform: translateX(-50%) rotate(120deg); }
+.petal6 { transform: translateX(-50%) rotate(150deg); }
+
+@keyframes sway { 
+  0%, 100% { transform: rotate(-2deg); } 
+  50% { transform: rotate(2deg); } 
+}
+
+/* States */
 .envelope.open .triangle-flap {
   transform: rotateX(180deg);
 }
 
 .envelope.open .letter {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-@media screen and (max-width: 600px) {
-  .envelope { min-height: 220px; }
-  .triangle-flap { height: 80px; }
-  .flowers { transform: translateX(-50%) scale(0.6); bottom:40px; }
-  .letter { font-size:13px; padding:15px; }
-  .hint { font-size:13px; margin-top:10px; }
+.envelope.open .flowers {
+  display: none; /* Sembunyikan bunga saat letter terbuka */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+  
+  .envelope-container {
+    max-width: 320px;
+    padding: 15px 0;
+  }
+  
+  .envelope {
+    min-height: 380px; /* Sesuaikan untuk mobile */
+  }
+  
+  .triangle-flap {
+    height: 100px;
+  }
+  
+  .letter {
+    top: 110px;
+    padding: 15px;
+    font-size: 13px;
+    min-height: 220px;
+  }
+  
+  .letter h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .letter p {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  
+  .sender {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  
+  .flowers {
+    transform: translateX(-50%) scale(0.6);
+    bottom: 15px;
+  }
+  
+  .hint {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .envelope-container {
+    max-width: 280px;
+  }
+  
+  .envelope {
+    min-height: 360px;
+  }
+  
+  .letter {
+    top: 100px;
+    padding: 12px;
+    min-height: 200px;
+  }
+  
+  .letter h2 {
+    font-size: 18px;
+  }
+  
+  .letter p {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .sender {
+    font-size: 14px;
+  }
+  
+  .flowers {
+    transform: translateX(-50%) scale(0.5);
+  }
 }
